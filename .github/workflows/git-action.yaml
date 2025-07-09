@@ -9,7 +9,7 @@ jobs:
  
     env:
       AWS_REGION: ap-south-1
-      ECR_REPO: frontend
+      ECR_REPO: backend
       ECR_REGISTRY: 658886689334.dkr.ecr.ap-south-1.amazonaws.com
  
     steps:
@@ -32,22 +32,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
- 
-      - name: Read & Bump Version
-        if: "!startsWith(steps.last_commit.outputs.message, 'Bump version')"
-        id: version
-        run: |
-          old_version=$(cat VERSION | tr -d v)
-          new_version=$((old_version + 1))
-          echo "v$new_version" > VERSION
-          echo "VERSION=v$new_version" >> $GITHUB_ENV
- 
-      - name: Commit & Push New Version
-        if: "!startsWith(steps.last_commit.outputs.message, 'Bump version')"
-        run: |
-          git add VERSION
-          git commit -m "Bump version to $VERSION"
-          git push
         
       - name: Configure AWS Credentials
         if: "!startsWith(steps.last_commit.outputs.message, 'Bump version')"

@@ -1,20 +1,18 @@
-# Build stage
-FROM node:18-alpine as build
-
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-# Production stage
+# Use official Node.js LTS image
 FROM node:18-alpine
 
+# Create app directory
 WORKDIR /app
-RUN npm install -g serve
 
-COPY --from=build /app/build ./build
+# Copy package files and install dependencies
+COPY package*.json ./
+RUN npm install --production
 
-EXPOSE 1800
+# Copy source code
+COPY . .
 
-CMD ["serve", "-s", "build", "-l", "1800"]
+# Expose port 1700
+EXPOSE 1700
+
+# Start the backend
+CMD ["node", "index.js"]
