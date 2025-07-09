@@ -58,8 +58,8 @@ jobs:
       - name: Build, Tag and Push Docker Image
         if: "!startsWith(steps.last_commit.outputs.message, 'Bump version')"
         run: |
-          docker build -t $ECR_REPO:${{ env.VERSION }} .
-          docker tag $ECR_REPO:${{ env.VERSION }} $ECR_REGISTRY/$ECR_REPO:${{ env.VERSION }}
-          docker tag $ECR_REPO:${{ env.VERSION }} $ECR_REGISTRY/$ECR_REPO:latest
-          docker push $ECR_REGISTRY/$ECR_REPO:${{ env.VERSION }}
+          docker build -t $ECR_REPO .
+          docker tag $ECR_REPO $ECR_REGISTRY/$ECR_REPO
+          docker tag $ECR_REPO $ECR_REGISTRY/$ECR_REPO:latest
+          docker push $ECR_REGISTRY/$ECR_REPO
           docker push $ECR_REGISTRY/$ECR_REPO:latest
