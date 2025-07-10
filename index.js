@@ -15,6 +15,6 @@ app.get('/health', (req, res) => {
   res.sendStatus(200); // ECS expects 200 for healthy
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Backend running on http://localhost:${PORT}`);
 });
