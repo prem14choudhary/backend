@@ -6,9 +6,45 @@ const PORT = 1700;
 
 app.use(cors());
 
-app.get('/api/ping', (req, res) => {
+app.get('/api/ping1', (req, res) => {
   res.json({ message: 'Pong from backend!' });
 });
+
+app.get('/api/ping2', (req, res) => {
+  res.json({ message: 'Pong from backend!' });
+});
+
+app.get('/api/ping3', (req, res) => {
+  res.json({ message: 'Pong from backend!' });
+});
+
+
+app.get('/api/ping4', (req, res) => {
+  res.json({ message: 'Pong from backend!' });
+});
+
+app.get('/api/ping5', (req, res) => {
+  res.json({ message: 'Pong from backend!' });
+});
+
+app.get('/api/ping6', (req, res) => {
+  res.json({ message: 'Pong from backend!' });
+});
+
+app.get('/api/ping7', (req, res) => {
+  res.json({ message: 'Pong from backend!' });
+});
+
+
+app.get('/api/ping8', (req, res) => {
+  res.json({ message: 'Pong from backend!' });
+});
+
+
+app.get('/api/ping9', (req, res) => {
+  res.json({ message: 'Pong from backend!' });
+});
+
 
 // ✅ Add a basic health check endpo int
 app.get('/health', (req, res) => {
