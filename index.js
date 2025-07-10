@@ -10,7 +10,7 @@ app.get('/api/ping', (req, res) => {
   res.json({ message: 'Pong from backend!' });
 });
 
-// ✅ Add a basic health check endpoint
+// ✅ Add a basic health check endpo int
 app.get('/health', (req, res) => {
   res.sendStatus(200); // ECS expects 200 for healthy
 });
